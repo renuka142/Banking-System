@@ -1,0 +1,140 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* splash screen css starts here  */
+#loading{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #e4eff2 url("https://media3.giphy.com/media/jAYUbVXgESSti/giphy.gif") no-repeat center center;
+    z-index: 99999;
+}
+
+/* splash screen css ends here  */
+
+/* navbar css starts here  */
+.bg-light{
+    background-color: navy!important;
+}
+
+.my_nav{
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255,255/87%) !important;
+    backdrop-filter: blur(10px);
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 1.5rem;
+    color: #5f6368!important;
+}
+
+.nav-link{
+    color: white!important;
+    font-family: 'Noto Sans JP', sans-serif;
+    border-radius: 0.5rem;
+    margin: 5px;
+    
+}
+
+h1,h4,p{
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #5f6368!important;
+    text-align: center;
+}
+
+.nav-link:hover{
+    background-color: #C490E4;
+}
+/* navbar css ends here  */
+
+/* here content css starts here  */
+
+.ui three column grid{
+    margin: 10px;
+}
+
+.hero-content{
+    height: 100vh;
+    background-color: black;
+    color: #ffffff;
+    padding: 3rem;
+    /* border-bottom-left-radius: 45rem;
+    border-bottom-right-radius: 45rem; */
+    margin-bottom: 1vh;
+}
+
+.hero-img{
+    height: 500px;
+    width: 800px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 766px) {
+    .hero-img {
+      display: none;
+    }
+}
+
+.inverted purple {
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 462%;
+    background-color: #fff;
+    color: #039be5!important;
+    transition: 0.3s;
+}
+
+/* here content css starts here  */
+
+/* get-started-buttons css starts here*/
+.get-started-content{
+    height: 60vh;
+    background-color: #ff8a65;
+    border-top-left-radius: 42rem;
+    border-top-right-radius: 42rem;
+    border-bottom-right-radius: 42rem;
+    border-bottom-left-radius: 42rem;
+}
+
+.get-started-content .row{
+    padding: 25vh 0;
+}
+
+.get-started-content a{
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 162%;
+    background-color: #039be5;
+    color: #fff!important;
+    transition: 0.3s;
+}
+
+.get-started-content a:hover{
+    background-color: #017ab6;
+    text-decoration: none;
+}
+/* get-started-buttons css end here*/
+
+/*card css starts here*/
+
+.ui grid container ui card{
+    margin-bottom: 25px;
+    transition-duration: 0.4s;
+}
+
+.ui card:hover{
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.4s;
+}
+
+/*card css ends here*/
+.black{
+    color: white;
+}
+
+
+
