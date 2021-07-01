@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+    <!--Semantic UI CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <!-- AOS  -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+</head>
+
+<body style="background-color: black ;">
+    <!-- navbar starts here  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light my_nav fixed-top ">
+        <!-- <a class="navbar-brand" href="./index.html">World Bank</a> -->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./customers.html">Customers</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <!-- navbar ends here  -->
+
+    <br><br><br><br><br>
+
+    <div class="my-info text-center">
+        <button class="ui inverted green button active"  data-toggle="modal" data-target="#sendMoney"><i class="user icon"></i>Send Money</button>
+        <a class="ui inverted purple button active" href="" data-toggle="modal" data-target="#transactionHistory"><i class="history icon"></i>Transactions History</a>
+    </div>
+
+    <br><br><br>
+    <!-- Modal send money -->
+    <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-weight: bold; color: black;" class="modal-title" id="exampleModalLabel">Send Money</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="text" id="enterName" class="form-control" placeholder="Recipient's username"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">@email.com</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rs</span>
+                            </div>
+                            <input type="text" id="enterAmount" class="form-control" placeholder=" Enter Amount"
+                                aria-label="Amount (to the nearest dollar)">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="ui inverted red button" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="sendMoney()" class="ui inverted green button" data-dismiss="modal">Send
+                        Money</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal transaction History-->
+    <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-weight: bold; color: black;" class="modal-title" id="exampleModalLabel">Transaction History</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ol id="transaction-history-body">
+
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="ui inverted red button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table  -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class=" active table table-hover table table-bordered ">
+                <thead>
+                    <tr class="table-danger">
+                        <th style="font-weight: bold; color: black; text-align: center;" scope="col">Sr. No.</th>
+                        <th style="font-weight: bold; color: black; text-align: center;" scope="col">Name</th>
+                        <th style="font-weight: bold; color: black; text-align: center;" scope="col">E-mail</th>
+                        <th style="font-weight: bold; color: black; text-align: center;" scope="col">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-light">
+                        <td style="text-align: center;" scope="row">1</td>
+                        <td style="text-align: center;">Krystina</td>
+                        <td style="text-align: center;">Krystina@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="anshulBankBalance">15000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-info">
+                        <td  style="text-align: center;"scope="row">2</td>
+                        <td style="text-align: center;">Chris</td>
+                        <td style="text-align: center;">Chris@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="prajwalBankBalance">78528</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td  style="text-align: center;"scope="row">3</td>
+                        <td style="text-align: center;">Kim</td>
+                        <td style="text-align: center;">kim@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="shreyasBankBalance">58220</p>
+                        </td>
+                    </tr>
+                    <tr class="table-info">
+                        <td  style="text-align: center;"scope="row">4</td>
+                        <td style="text-align: center;">Rachel</td>
+                        <td style="text-align: center;">rachel@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="dinkalBankBalance">40008</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td  style="text-align: center;"scope="row">5</td>
+                        <td style="text-align: center;">Ana</td>
+                        <td style="text-align: center;">ana@email.com</td>
+                        <td style="text-align: center;">
+                            <p id="anushreeBankBalance">63000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-info">
+                        <td  style="text-align: center;"scope="row">6</td>
+                        <td style="text-align: center;">Steve</td>
+                        <td style="text-align: center;">steve@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="sakshiBankBalance">19030</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td style="text-align: center;">7</td>
+                        <td style="text-align: center;">Bill</td>
+                        <td style="text-align: center;">bill@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="janviBankBalance">57008</p>
+                        </td>
+                    </tr>
+                    <tr class="table-info">
+                        <td  style="text-align: center;"scope="row">8</td>
+                        <td style="text-align: center;">Robert</td>
+                        <td style="text-align: center;">robert@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="aasawariBankBalance">35603</p>
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <td  style="text-align: center;"scope="row">9</td>
+                        <td style="text-align: center;">Milly</td>
+                        <td style="text-align: center;">milly@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="adityaBankBalance">80000</p>
+                        </td>
+                    </tr>
+                    <tr class="table-info">
+                        <td  style="text-align: center;"scope="row">10</td>
+                        <td style="text-align: center;">Rayn</td>
+                        <td style="text-align: center;">rayn@gmail.com</td>
+                        <td style="text-align: center;">
+                            <p id="pranavBankBalance">13780</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Table-->
+    
+    <br><br>
+
+    <!-- footer starts here -->
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Grid container -->
+    
+        </footer>
+    <!-- footer ends here -->
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</body>
+</html>
